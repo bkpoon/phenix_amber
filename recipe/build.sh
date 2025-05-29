@@ -21,3 +21,11 @@ make -f Makefile.ap install
 cd ..
 
 ${RSYNC} -av bin dat lib $PREFIX
+
+# remove full path on macOS
+if [[ ! -z "$MACOSX_DEPLOYMENT_TARGET" ]]; then
+  echo Fixing rpath:
+  for f in `find ${SP_DIR} -name "pysander*.so"`; do
+    ${PYTHON} ${RECIPE_DIR}/fix_macos_rpath.py ${f}
+  done
+fi
