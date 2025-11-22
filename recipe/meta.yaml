@@ -44,7 +44,7 @@ requirements:
 
   run:
    - python
-   - {{ pin_compatible('numpy') }}
+   - numpy
    - libnetcdf
    - netcdf-fortran
    - openblas
