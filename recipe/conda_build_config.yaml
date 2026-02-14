@@ -1,5 +1,11 @@
 channel_targets:
   - phenix-project main
+MACOSX_DEPLOYMENT_TARGET:      # [osx and x86_64]
+  - 10.13                      # [osx and x86_64]
+MACOSX_SDK_VERSION:            # [osx and x86_64]
+  - 10.13                      # [osx and x86_64]
+c_stdlib_version:              # [osx and x86_64]
+  - 10.13                      # [osx and x86_64]
 python:
   # part of a zip_keys: python, is_python_min
   - 3.9.* *_cpython
