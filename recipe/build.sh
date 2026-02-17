@@ -10,8 +10,13 @@ fi
 # remove -D_FORTIFY_SOURCE=2 because of stack smashing
 echo Fixing CPPFLAGS
 echo BEFORE: $CPPFLAGS
-export CPPFLAGS="${CPPFLAGS//-D_FORTIFY_SOURCE=2 /}"
+export CPPFLAGS="${CPPFLAGS//-D_FORTIFY_SOURCE=2 /-D_FORTIFY_SOURCE=0 }"
 echo AFTER:$CPPFLAGS
+
+# add -fno-stack-protector to CFLAGS and CXXFLAGS
+echo Fixing CFLAGS and CXXFLAGS
+export CFLAGS="$CFLAGS -fno-stack-protector"
+export CXXFLAGS="$CXXFLAGS -fno-stack-protector"
 
 export MSANDERHOME=`pwd`
 ./configure --conda --openmp
