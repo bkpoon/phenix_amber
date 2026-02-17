@@ -825,7 +825,7 @@ class PDBFile(object):
             atom that does not contain a SEGID identifier.
         use_hetatoms: bool, optional, default True
             If True, certain atoms will have the HETATM tag instead of ATOM
-            as per the PDB-standard. 
+            as per the PDB-standard.
         standard_resnames : bool, optional, default False
             If True, common aliases for various amino and nucleic acid residues
             will be converted into the PDB-standard values.
@@ -891,7 +891,7 @@ class PDBFile(object):
                 symm_line = "REMARK 290   SMTRY" + fmt % tuple(arr_list)
                 dest.write(symm_line)
         if coordinates is not None:
-            coords = np.array(coordinates, copy=False, subok=True)
+            coords = np.asarray(coordinates)
             try:
                 coords = coords.reshape((-1, len(struct.atoms), 3))
             except ValueError:
@@ -1560,7 +1560,7 @@ class CIFFile(object):
         sym.append([struct.space_group])
         cont.append(sym)
         if coordinates is not None:
-            coords = np.array(coordinates, copy=False, subok=True)
+            coords = np.asarray(coordinates)
             try:
                 coords = coords.reshape((-1, len(struct.atoms), 3))
             except ValueError:

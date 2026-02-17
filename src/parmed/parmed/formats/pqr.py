@@ -263,7 +263,7 @@ class PQRFile(object):
                     struct.box[0], struct.box[1], struct.box[2], struct.box[3],
                     struct.box[4], struct.box[5]))
         if coordinates is not None:
-            coords = np.array(coordinates, copy=False, subok=True)
+            coords = np.asarray(coordinates)
             try:
                 coords = coords.reshape((-1, len(struct.atoms), 3))
             except ValueError:

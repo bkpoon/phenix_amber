@@ -83,7 +83,7 @@ def set_positions(positions):
     # numpy arrays to solve this quickly, but in cases where the coordinates
     # are given as a list (or tuple) of Vec3's (or tuples), this requires
     # separate handling
-    positions = _np.array(positions, copy=False, subok=True)
+    positions = _np.asarray(positions)
     positions = positions.flatten()
     natom = _pys.natom()
     if len(positions) != natom * 3:
@@ -223,7 +223,7 @@ class setup(object):
     ...                   inpcrd.box, mm_options) as context:
     ...     context.positions = inpcrd.coords
     ...     e, f = sander.energy_forces()
-    ... 
+    ...
     >>> sander.is_setup()
     False
 
@@ -235,7 +235,7 @@ class setup(object):
     ... finally:
     ...     if sander.is_setup():
     ...         sander.cleanup()
-    ... 
+    ...
     >>> sander.is_setup()
     False
 
@@ -260,7 +260,7 @@ class setup(object):
                 box = rst.box
 
         # Convert from numpy arrays to regular arrays
-        coordinates = _np.array(coordinates, copy=False, subok=True)
+        coordinates = _np.asarray(coordinates)
         coordinates = coordinates.flatten().tolist()
         if box is None or box is False:
             box = _np.zeros(6)
