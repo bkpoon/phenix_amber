@@ -7,6 +7,12 @@ if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" == "1" ]]; then
   RSYNC=${BUILD_PREFIX}/bin/rsync
 fi
 
+# remove -D_FORTIFY_SOURCE=2 because of stack smashing
+echo Fixing CPPFLAGS
+echo BEFORE: $CPPFLAGS
+export CPPFLAGS="${CPPFLAGS//-D_FORTIFY_SOURCE=2 /}"
+echo AFTER:$CPPFLAGS
+
 export MSANDERHOME=`pwd`
 ./configure --conda --openmp
 
