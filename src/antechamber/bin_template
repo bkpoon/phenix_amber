@@ -1,4 +1,4 @@
 #!/bin/sh
 
 export AMBERCLASSICHOME="$(dirname "$(cd "$(dirname "$0")" && pwd)")"
-"$AMBERCLASSICHOME/bin/wrapped_progs/REPLACE_ME" "$@"
+"$AMBERCLASSICHOME/bin/x/REPLACE_ME" "$@"
